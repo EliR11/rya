@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD con Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='w3.css') }}">
+    <style>
+        body {
+            background-color: #e0f7fa; /* Color de fondo */
+            font-family: Arial, sans-serif; /* Fuente */
+        }
+        
+        .w3-container {
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra */
+            padding: 20px;
+        }
+
+        table {
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden; /* Asegura que las esquinas redondeadas se mantengan */
+        }
+
+        th {
+            background-color: #4CAF50; /* Color del encabezado */
+            color: white; /* Color del texto del encabezado */
+        }
+
+        td {
+            text-align: center; /* Centrar texto en celdas */
+        }
+        
+        .w3-button {
+            border-radius: 5px; /* Bordes redondeados para botones */
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+<div class="w3-sidebar w3-indigo w3-bar-block" style="width:14%">
+    <h2 class="w3-bar-item"><b>Menu</b></h2>
+    <h4><a href="{{ url_for('index') }}" class="w3-bar-item w3-button"><b>Principal</b></a></h4>
+    <h4><a href="{{ url_for('create') }}" class="w3-bar-item w3-button"><b>registro</b></a></h4>
+    <h4><a href="#" class="w3-bar-item w3-button"><b>Actualizacion</b></a></h4>
+    <h4><a href="{{ url_for('estadisticas') }}" class="w3-bar-item w3-button"><b>Estadisticas</b></a></h4>
+  </div>
+  
+  <!-- Page Content -->
+  <div style="margin-left:14%">
+    
+  <div class="w3-container w3-teal">
+    
+    <h1><b> Sistema RYA </b></h1>
+  </div>
+    {% block content %} {% endblock %}
+</body>
+</html>

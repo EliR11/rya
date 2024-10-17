@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="w3-container w3-center w3-padding-32" style="background-color: #f2f2f2; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+    <h2>Estadísticas de Personas</h2>
+    
+    <div class="w3-row-padding">
+        <!-- Tarjeta Total de Personas -->
+        <div class="w3-col m4">
+            <div class="w3-card-4" style="margin-bottom: 20px;">
+                <header class="w3-container w3-blue">
+                    <h3>Total de Personas</h3>
+                </header>
+                <div class="w3-container">
+                    <h1>{{ total_personas }}</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta Total por Ciudad -->
+        <div class="w3-col m4">
+            <div class="w3-card-4" style="margin-bottom: 20px;">
+                <header class="w3-container w3-green">
+                    <h3>Total por Ciudad</h3>
+                </header>
+                <div class="w3-container">
+                    {% for ciudad, total in total_por_ciudad %}
+                        <p>{{ ciudad }}: {{ total }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjeta Gráfico de Edades -->
+        <div class="w3-col m4">
+            <div class="w3-card-4" style="margin-bottom: 20px;">
+                <header class="w3-container w3-orange">
+                    <h3>Distribución de Edades</h3>
+                </header>
+                <div class="w3-container">
+                    <!-- Aquí se puede integrar un gráfico -->
+                    <canvas id="edadChart" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Código del gráfico -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('edadChart').getContext('2d');
+        var edadChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Menos de 20', '20-29', '30-39', '40-49', '50-59', '60 o más'],
+                datasets: [{
+                    label: 'Distribución de Edades',
+                    data: [
+                        {{ porcentaje_edades.get(0, 0) }},
+                        {{ porcentaje_edades.get(20, 0) }},
+                        {{ porcentaje_edades.get(30, 0) }},
+                        {{ porcentaje_edades.get(40, 0) }},
+                        {{ porcentaje_edades.get(50, 0) }},
+                        {{ porcentaje_edades.get(60, 0) }}
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255,206,86,1)',
+                        'rgba(75,192,192,1)',
+                        'rgba(153,102,255,1)',
+                        'rgba(255,159,64,1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Distribución de Edades'
+                    }
+                }
+            }
+        });
+    </script>
+
+    <a href="{{ url_for('index') }}" class="w3-button w3-blue">Volver a la Lista</a>
+</div>
+{% endblock %}

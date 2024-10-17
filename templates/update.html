@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Actualizar Persona</h2>
+<form method="POST">
+    <input type="text" name="nombre" value="{{ persona.nombre }}" required>
+    <input type="text" name="apellido" value="{{ persona.apellido }}" required>
+    <input type="number" name="edad" value="{{ persona.edad }}" required>
+    <input type="text" name="cedula" value="{{ persona.cedula }}" required>
+    <input type="text" name="ciudad" value="{{ persona.ciudad }}" required>
+    <button type="submit" class="w3-button w3-blue">Actualizar</button>
+</form>
+<a href="{{ url_for('index') }}" class="w3-button w3-red">Cancelar</a>
+{% endblock %}

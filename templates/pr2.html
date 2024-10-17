@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+    <div class="w3-container w3-center w3-padding-32" style="background-color: #f2f2f2; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin: auto; width: 1300px;">
+        <h2>Crear Nueva Persona</h2>
+        <div class="w3-card-4" style="padding: 20px; background-color: #ffffff; border-radius: 8px;">
+            <form method="POST">
+                <!-- Fila 1 -->
+                <div class="w3-row">
+                    <div class="w3-col s3 w3-margin-bottom w3-margin-right"> <!-- Agregado w3-margin-right -->
+                        <label for="nombres">Nombres:</label>
+                        <input type="text" name="nombres" id="nombres" required class="w3-input w3-border w3-round" placeholder="Ingrese sus nombres">
+                    </div>
+                    <div class="w3-col s3 w3-margin-bottom w3-margin-right"> <!-- Agregado w3-margin-right -->
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" name="apellidos" id="apellidos" required class="w3-input w3-border w3-round" placeholder="Ingrese sus apellidos">
+                    </div>
+                    <div class="w3-col s3 w3-margin-bottom"> <!-- Sin margen derecho para el último -->
+                        <label for="nro_acreditacion">Número de Acreditación:</label>
+                        <input type="text" name="nro_acreditacion" id="nro_acreditacion" required class="w3-input w3-border w3-round" placeholder="Ingrese su número de acreditación">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
